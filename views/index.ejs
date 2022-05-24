@@ -1,0 +1,136 @@
+<%- include('./partials/header.ejs') %>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="ppp.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6 mt-5">
+                <h2 class="">Add/Update Form</h2>
+                <!-- Form -->
+                <form method="post" action="/student">
+                    <div class="mb-3">
+                    
+                        
+                        <input type="text" class="form-control" placeholder="full Name"
+                            id="text"
+                            aria-describedby="text" name="name">
+                        
+                    </div>
+                    <div class="mb-3">
+                      
+                        <input type="text" class="form-control" placeholder="phone number"
+                            id="exampleInputPassword1" name="phone">
+                    </div>
+                    <div class="mb-3">
+                    
+                        <input type="text" class="form-control" placeholder="state/region"
+                            id="exampleInputPassword1" name="state">
+                    </div>
+
+                    <div class="mb-3">
+                    
+                        <input type="text" class="form-control" placeholder="Address"
+                            id="exampleInputPassword1" name="address">
+                    </div>
+
+                    >>>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                    
+                        
+                            <input type="text" class="form-control" placeholder="Email address"
+                                id="text"
+                                aria-describedby="text" name="email">
+                            
+                        </div>
+                        <div class="mb-3">
+                          
+                            <input type="text" class="form-control" placeholder="Country"
+                                id="exampleInputPassword1" name="country">
+                        </div>
+                        <div class="mb-3">
+                        
+                            <input type="text" class="form-control" placeholder="city"
+                                id="exampleInputPassword1" name="city">
+                        </div>
+    
+                        <div class="mb-3">
+                        
+                            <input type="text" class="form-control" placeholder="zip/code"
+                                id="exampleInputPassword1" name="zipcode">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            >>>>
+             <div class="col-sm-12 mt-5">
+                <h2 class="">List of Student</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">city</th>
+                              <th scope="col">postcode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i=1 %>
+                            <% data.forEach((item)=>{%>
+                                <tr>
+                                    <th scope="row"><%=i++ %> </th>
+                                        <td><%=item.name %> </td>
+                                            <td><%=item.email %></td>
+                                                <td><%=item.phone %></td>
+                                                
+                                                <td><%=item.city %></td>
+                                                
+                                                <td><%=item.zipcode %></td>
+                                                    <td>
+                                                        <form
+                                                            action="/student/edit/<%=item._id
+                                                            %> " method="get"
+                                                            class="d-inline">
+                                                            <button
+                                                                type="submit"
+                                                                class="btn">
+                                                                <i class="fas
+                                                                    fa-pen-square
+                                                                    text-info"></i>
+                                                            </button>
+                                                        </form>
+
+                                                        <form
+                                                            action="/student/delete/<%=item._id
+                                                            %> " method="post"
+                                                            class="d-inline">
+                                                            <button
+                                                                type="submit"
+                                                                class="btn">
+                                                                <i class="fas
+                                                                    fa-trash
+                                                                    text-danger"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                                </div> 
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <%- include('./partials/footer.ejs') %>
